@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact – FounderVest</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+.contact-info { display: flex; flex-direction: column; gap: 14px; }
+.c-item { display: flex; gap: 14px; align-items: flex-start; padding: 18px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; transition: border-color 0.2s; }
+.c-item:hover { border-color: var(--border2); }
+.c-icon { width: 42px; height: 42px; background: rgba(124,110,247,0.1); border: 1px solid rgba(124,110,247,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.c-item h4 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+.c-item p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+.c-item a { color: var(--accent); text-decoration: none; }
+.c-item a:hover { text-decoration: underline; }
+
+.form-box { background: var(--card); border: 1px solid var(--border2); border-radius: 20px; padding: 36px; }
+.form-box h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.25rem; font-weight: 800; margin-bottom: 6px; }
+.form-box > p { font-size: 0.875rem; color: var(--muted); margin-bottom: 26px; line-height: 1.6; }
+
+.success-msg { display: none; text-align: center; padding: 32px; }
+.success-msg.show { display: block; }
+.success-icon { width: 64px; height: 64px; background: rgba(34,212,126,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 16px; }
+.success-msg h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; }
+.success-msg p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+@media(max-width:860px) { .contact-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>FounderVest</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="startups.html" class="nav-link">Startups</a>
+    <a href="investors.html" class="nav-link">Investors</a>
+    <a href="how.html" class="nav-link">How it Works</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="startups.html" class="nav-link">Startups</a>
+  <a href="investors.html" class="nav-link">Investors</a>
+  <a href="how.html" class="nav-link">How it Works</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <div class="mob-nav-actions">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="badge badge-purple" style="margin-bottom:18px;"><span class="badge-dot"></span> Get in Touch</div>
+      <h1>Let's talk</h1>
+      <p>Whether you're a founder ready to raise, an investor looking for early-stage deals, or want to discuss a partnership — reach out. Ujjawal reads every message personally.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div class="fade-in">
+          <div class="section-eyebrow" style="justify-content:flex-start;margin-bottom:20px;">Contact Info</div>
+          <div class="contact-info">
+            <div class="c-item">
+              <div class="c-icon">✉️</div>
+              <div>
+                <h4>Email</h4>
+                <p><a href="mailto:hello@foundervest.in">hello@foundervest.in</a></p>
+                <p style="margin-top:4px;">For general queries, partnerships, and press.</p>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">🚀</div>
+              <div>
+                <h4>For Founders</h4>
+                <p><a href="mailto:founders@foundervest.in">founders@foundervest.in</a></p>
+                <p style="margin-top:4px;">Questions about listing your startup or the verification process.</p>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">💼</div>
+              <div>
+                <h4>For Investors</h4>
+                <p><a href="mailto:investors@foundervest.in">investors@foundervest.in</a></p>
+                <p style="margin-top:4px;">Questions about the investor program, deal flow, or premium access.</p>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">🤝</div>
+              <div>
+                <h4>Partnerships</h4>
+                <p><a href="mailto:partners@foundervest.in">partners@foundervest.in</a></p>
+                <p style="margin-top:4px;">Incubators, accelerators, universities, and legal partners welcome.</p>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">⚡</div>
+              <div>
+                <h4>Response Time</h4>
+                <p>We aim to reply within <strong style="color:var(--text)">24 hours</strong> on weekdays. For urgent matters, mention it in your subject line.</p>
+              </div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">🇮🇳</div>
+              <div>
+                <h4>Based in India</h4>
+                <p>Serving founders and investors across all of India, with a special focus on Tier 2–4 cities.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-box fade-in">
+          <h3>Send a message</h3>
+          <p>Ujjawal reads every message personally and responds within a day. Tell us who you are and what you're looking for.</p>
+
+          <div id="form-content">
+            <div class="form-row">
+              <div class="form-group"><label>Your Name *</label><input type="text" id="f-name" placeholder="e.g. Rahul Kumar"/></div>
+              <div class="form-group"><label>Email *</label><input type="email" id="f-email" placeholder="you@example.com"/></div>
+            </div>
+            <div class="form-group">
+              <label>I am a *</label>
+              <select id="f-role">
+                <option value="">— Select —</option>
+                <option>Founder looking to raise</option>
+                <option>Investor looking for deals</option>
+                <option>Partner / Incubator / University</option>
+                <option>Press / Media</option>
+                <option>Just exploring</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Subject *</label><input type="text" id="f-subject" placeholder="e.g. Interested in listing my startup in AgriTech"/></div>
+            <div class="form-group"><label>Message *</label><textarea id="f-msg" rows="5" placeholder="Tell us about yourself, your startup or investment thesis, and what you need from us…"></textarea></div>
+            <button class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:4px;" onclick="submitContact()">Send Message →</button>
+            <p style="font-size:0.76rem;color:var(--muted);margin-top:12px;text-align:center;">We never share your information with third parties.</p>
+          </div>
+
+          <div class="success-msg" id="success-msg">
+            <div class="success-icon">📬</div>
+            <h3>Message sent!</h3>
+            <p>Thank you for reaching out. Ujjawal will read your message and reply within 24 hours on weekdays.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--text)"><span class="logo-dot"></span>FounderVest</a><p>Democratizing access to capital for India's next generation of entrepreneurs.</p></div>
+        <div class="footer-col"><h4>Platform</h4><ul><li><a href="startups.html">Browse Startups</a></li><li><a href="investors.html">Find Investors</a></li><li><a href="how.html">How it Works</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 FounderVest · Made in India 🇮🇳 by Ujjawal Upadhyay</p><p>Not a registered broker-dealer. Investments carry risk.</p></div>
+    </div>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+<script>
+function submitContact() {
+  const name = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  const role = document.getElementById('f-role').value;
+  const subject = document.getElementById('f-subject').value.trim();
+  const msg = document.getElementById('f-msg').value.trim();
+  if (!name || !email || !role || !subject || !msg) {
+    alert('Please fill in all required fields before submitting.');
+    return;
+  }
+  document.getElementById('form-content').style.display = 'none';
+  document.getElementById('success-msg').classList.add('show');
+}
+</script>
+</body>
+</html>

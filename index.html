@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FounderVest – Where India's Startups Meet Capital</title>
+<meta name="description" content="FounderVest connects verified early-stage founders with the right investors through AI-powered matching. Built for Tier 2–4 India."/>
+<link rel="stylesheet" href="style.css"/>
+<style>
+/* HERO */
+.hero {
+  min-height: calc(100vh - 64px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 5%;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(2.6rem, 6.5vw, 5.5rem);
+  font-weight: 800; line-height: 1.04;
+  letter-spacing: -0.03em; max-width: 900px;
+  margin-bottom: 24px;
+}
+.grad { background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.grad2 { background: linear-gradient(135deg, var(--gold), #f77b4a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 520px; line-height: 1.72; margin-bottom: 44px; }
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-bottom: 60px; }
+.hero-notice {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.8rem; color: var(--muted);
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 20px; margin-bottom: 64px;
+}
+.hero-notice .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+.stats-row {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; width: 100%; max-width: 640px;
+}
+.stat-box { background: var(--surface); padding: 24px 20px; text-align: center; }
+.stat-num {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1.8rem; font-weight: 800; letter-spacing: -0.03em;
+  color: var(--text); margin-bottom: 4px;
+}
+.stat-label { font-size: 0.75rem; color: var(--muted); line-height: 1.4; }
+
+/* MARQUEE */
+.marquee-wrap { overflow: hidden; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 0; }
+.marquee-track { display: flex; animation: slide 22s linear infinite; width: max-content; }
+.m-item { display: flex; align-items: center; gap: 8px; padding: 0 28px; font-size: 0.8rem; font-weight: 500; color: var(--muted); white-space: nowrap; }
+.m-item .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; }
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* HOW IT WORKS */
+.steps-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: var(--border); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+.step-box { background: var(--card); padding: 32px 24px; transition: background 0.25s; }
+.step-box:hover { background: var(--surface2); }
+.step-n { font-family: 'Bricolage Grotesque', sans-serif; font-size: 3rem; font-weight: 800; color: rgba(124,110,247,0.12); line-height: 1; margin-bottom: 20px; transition: color 0.25s; }
+.step-box:hover .step-n { color: rgba(124,110,247,0.5); }
+.step-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(124,110,247,0.1); border: 1px solid rgba(124,110,247,0.15); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin-bottom: 14px; }
+.step-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+.step-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+/* WHO */
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.who-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 20px; padding: 40px 36px;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative; overflow: hidden;
+}
+.who-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.who-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; opacity: 0; transition: opacity 0.3s; }
+.who-card.founder::after { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.who-card.investor::after { background: linear-gradient(90deg, var(--gold), var(--accent2)); }
+.who-card:hover::after { opacity: 1; }
+.who-icon { width: 58px; height: 58px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 22px; }
+.who-card.founder .who-icon { background: rgba(124,110,247,0.1); border: 1px solid rgba(124,110,247,0.2); }
+.who-card.investor .who-icon { background: rgba(245,200,66,0.1); border: 1px solid rgba(245,200,66,0.2); }
+.who-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 10px; }
+.who-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 26px; }
+.who-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 30px; }
+.who-list li { display: flex; align-items: center; gap: 9px; font-size: 0.85rem; color: var(--muted); }
+.chk { width: 18px; height: 18px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; flex-shrink: 0; }
+.who-card.founder .chk { background: rgba(124,110,247,0.15); color: var(--accent); }
+.who-card.investor .chk { background: rgba(245,200,66,0.15); color: var(--gold); }
+.who-link { display: inline-flex; align-items: center; gap: 7px; font-size: 0.875rem; font-weight: 600; text-decoration: none; padding: 11px 20px; border-radius: 10px; transition: all 0.2s; }
+.who-card.founder .who-link { background: rgba(124,110,247,0.12); color: var(--accent); }
+.who-card.founder .who-link:hover { background: var(--accent); color: white; }
+.who-card.investor .who-link { background: rgba(245,200,66,0.12); color: var(--gold); }
+.who-card.investor .who-link:hover { background: var(--gold); color: #08080f; }
+
+/* TRUST STRIP */
+.trust-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.trust-points { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border-radius: 16px; overflow: hidden; }
+.tp { background: var(--card); padding: 28px 24px; }
+.tp-icon { font-size: 1.5rem; margin-bottom: 12px; }
+.tp-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+.tp-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+/* CTA BAND */
+.cta-band {
+  background: linear-gradient(135deg, rgba(124,110,247,0.07), rgba(247,87,110,0.04));
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  padding: 80px 5%; text-align: center; position: relative; z-index: 1;
+}
+.cta-band h2 { font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(1.9rem,4vw,3rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 14px; }
+.cta-band p { font-size: 1rem; color: var(--muted); max-width: 440px; margin: 0 auto 36px; line-height: 1.7; }
+.cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+@media(max-width:900px){ .steps-row,.who-grid,.trust-points{ grid-template-columns:1fr 1fr; } }
+@media(max-width:600px){ .steps-row,.who-grid,.trust-points,.stats-row{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>FounderVest</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="startups.html" class="nav-link">Startups</a>
+    <a href="investors.html" class="nav-link">Investors</a>
+    <a href="how.html" class="nav-link">How it Works</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="startups.html" class="nav-link">Startups</a>
+  <a href="investors.html" class="nav-link">Investors</a>
+  <a href="how.html" class="nav-link">How it Works</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--border);margin-top:8px;">
+    <a href="login.html" class="btn btn-ghost" style="flex:1;justify-content:center;">Log in</a>
+    <a href="signup.html" class="btn btn-primary" style="flex:1;justify-content:center;">Join Free</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="page">
+<section class="hero">
+  <div class="badge badge-purple fade-in"><span class="badge-dot"></span> Now Building — Join Early</div>
+  <h1 class="fade-in">Where <span class="grad">founders</span> meet<br/>the right <span class="grad2">investors</span></h1>
+  <p class="hero-sub fade-in">FounderVest connects verified early-stage Indian startups with relevant investors through AI-powered matching — built especially for Tier 2–4 founders who deserve a fair shot.</p>
+  <div class="hero-btns fade-in">
+    <a href="signup.html?role=founder" class="btn btn-primary btn-xl">I'm a Founder →</a>
+    <a href="signup.html?role=investor" class="btn btn-ghost btn-xl">I'm an Investor</a>
+  </div>
+  <div class="hero-notice fade-in">
+    <span class="dot"></span>
+    Platform is in early access — be among the first founders and investors to join
+  </div>
+  <div class="stats-row fade-in">
+    <div class="stat-box">
+      <div class="stat-num">1L+</div>
+      <div class="stat-label">Startups active in India today</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">₹2Cr</div>
+      <div class="stat-label">Avg. funding gap below Series A</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">Tier 2–4</div>
+      <div class="stat-label">Our primary focus area</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" style="position:relative;z-index:1;">
+  <div class="marquee-track" id="marquee"></div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-eyebrow">Process</div>
+      <div class="section-title">From signup to funded, step by step</div>
+      <p class="section-sub">We've removed every obstacle between a great idea and the capital it needs.</p>
+    </div>
+    <div class="steps-row fade-in">
+      <div class="step-box">
+        <div class="step-n">01</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Create & Verify</div>
+        <div class="step-desc">Build your profile and go through our verification — so investors can trust you from the first click.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">02</div>
+        <div class="step-icon">🤖</div>
+        <div class="step-title">AI Matching</div>
+        <div class="step-desc">Our engine analyses sector, stage, ticket size, and traction to find the most relevant investors for you.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">03</div>
+        <div class="step-icon">🤝</div>
+        <div class="step-title">Connect & Talk</div>
+        <div class="step-desc">Schedule intro calls, explore deal rooms, and communicate — all within the platform.</div>
+      </div>
+      <div class="step-box">
+        <div class="step-n">04</div>
+        <div class="step-icon">🚀</div>
+        <div class="step-title">Close the Round</div>
+        <div class="step-desc">Legal, compliance, and financial support to close cleanly — from term sheet to wire.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="how.html" class="btn btn-ghost">See Full Walkthrough →</a>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- WHO IT'S FOR -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-eyebrow">Who it's for</div>
+      <div class="section-title">Built for both sides of the table</div>
+      <p class="section-sub">Whether you're raising your first round or deploying capital, FounderVest works for you.</p>
+    </div>
+    <div class="who-grid fade-in">
+      <div class="who-card founder">
+        <div class="who-icon">🧑‍💻</div>
+        <div class="who-title">For Founders</div>
+        <p class="who-desc">First-time and young entrepreneurs — especially from Tier 2–4 cities — who have the ideas but need the network, credibility, and right investors to back them.</p>
+        <ul class="who-list">
+          <li><span class="chk">✓</span> Verified startup profile with credibility badge</li>
+          <li><span class="chk">✓</span> AI-matched to relevant investors automatically</li>
+          <li><span class="chk">✓</span> End-to-end legal & compliance assistance</li>
+          <li><span class="chk">✓</span> Pitch preparation and review support</li>
+          <li><span class="chk">✓</span> Community of founders and mentors</li>
+        </ul>
+        <a href="signup.html?role=founder" class="who-link">Join as Founder →</a>
+      </div>
+      <div class="who-card investor">
+        <div class="who-icon">💼</div>
+        <div class="who-title">For Investors</div>
+        <p class="who-desc">Angel investors, HNIs, and early-stage funds who want verified deal flow from India's most underserved startup segments — with data you can trust.</p>
+        <ul class="who-list">
+          <li><span class="chk">✓</span> Curated, verified deal flow dashboard</li>
+          <li><span class="chk">✓</span> Traction metrics and background checks</li>
+          <li><span class="chk">✓</span> Smart filters by sector, stage, ticket size</li>
+          <li><span class="chk">✓</span> Direct messaging with founders</li>
+          <li><span class="chk">✓</span> Portfolio tracking and follow-on alerts</li>
+        </ul>
+        <a href="signup.html?role=investor" class="who-link">Join as Investor →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- TRUST STRIP -->
+<section class="section trust-strip">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-eyebrow">Why FounderVest</div>
+      <div class="section-title">Built on trust, not hype</div>
+      <p class="section-sub">Every decision we make is designed to protect both founders and investors.</p>
+    </div>
+    <div class="trust-points fade-in">
+      <div class="tp">
+        <div class="tp-icon">🛡️</div>
+        <div class="tp-title">Verified Profiles</div>
+        <div class="tp-desc">Every startup is checked for MCA registration, team background, and pitch validity before going live on the platform.</div>
+      </div>
+      <div class="tp">
+        <div class="tp-icon">🎯</div>
+        <div class="tp-title">AI Matching</div>
+        <div class="tp-desc">Our matching engine analyses dozens of signals to connect founders with the most relevant investors — no cold outreach needed.</div>
+      </div>
+      <div class="tp">
+        <div class="tp-icon">🇮🇳</div>
+        <div class="tp-title">Tier 2–4 Focus</div>
+        <div class="tp-desc">We're specifically built for founders outside the metro bubble who have the talent but not the network.</div>
+      </div>
+      <div class="tp">
+        <div class="tp-icon">⚖️</div>
+        <div class="tp-title">Full Support</div>
+        <div class="tp-desc">Legal, compliance, and pitch support built in — so you can focus on building, not paperwork.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="badge badge-green" style="margin-bottom:20px;"><span class="badge-dot"></span> Early Access Open</div>
+  <h2>Be part of building<br/>India's startup future</h2>
+  <p>No gatekeeping. No broker fees upfront. Sign up free and get matched with the right people from day one.</p>
+  <div class="cta-btns">
+    <a href="signup.html?role=founder" class="btn btn-primary btn-xl">Join as Founder →</a>
+    <a href="signup.html?role=investor" class="btn btn-ghost btn-xl">Join as Investor</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="logo" style="color:var(--text)"><span class="logo-dot"></span>FounderVest</a>
+        <p>Democratizing access to capital for India's next generation of entrepreneurs. Built by Ujjawal Upadhyay.</p>
+        <div class="footer-social">
+          <a href="#">𝕏</a>
+          <a href="#">in</a>
+          <a href="#">📷</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Platform</h4><ul>
+        <li><a href="startups.html">Browse Startups</a></li>
+        <li><a href="investors.html">Find Investors</a></li>
+        <li><a href="how.html">How it Works</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Company</h4><ul>
+        <li><a href="about.html">About Ujjawal</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">SEBI Disclaimer</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 FounderVest · Made in India 🇮🇳 by Ujjawal Upadhyay</p>
+      <p>Not a registered broker-dealer. Investments carry risk.</p>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script src="app.js"></script>
+<script>
+const items = ['Verified Startups','AI-Powered Matching','Tier 2–4 India','Angel Network','Legal Support','Pitch Prep','Trust-First','End-to-End Help','Founder Community','Early Access'];
+const t = document.getElementById('marquee');
+const all = [...items,...items];
+t.innerHTML = all.map(i => `<div class="m-item"><span class="dot"></span>${i}</div>`).join('');
+</script>
+</body>
+</html>

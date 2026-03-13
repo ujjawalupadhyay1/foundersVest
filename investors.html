@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Investors – FounderVest</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.inv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.inv-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.3s; }
+.inv-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.inv-av { width: 56px; height: 56px; border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 800; border: 2px solid var(--border2); }
+.inv-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; }
+.inv-title { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; }
+.inv-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; }
+.inv-tag { font-size: 0.66rem; padding: 3px 8px; border-radius: 20px; background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.why-card { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px; }
+.why-icon { font-size: 1.5rem; margin-bottom: 12px; }
+.why-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 7px; }
+.why-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+@media(max-width:768px){ .why-grid{ grid-template-columns:1fr 1fr; } }
+@media(max-width:480px){ .why-grid,.inv-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>FounderVest</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="startups.html" class="nav-link">Startups</a>
+    <a href="investors.html" class="nav-link">Investors</a>
+    <a href="how.html" class="nav-link">How it Works</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="startups.html" class="nav-link">Startups</a>
+  <a href="investors.html" class="nav-link">Investors</a>
+  <a href="how.html" class="nav-link">How it Works</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <div class="mob-nav-actions">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="badge badge-purple" style="margin-bottom:18px;"><span class="badge-dot"></span> Investor Network</div>
+      <h1>Find Investors</h1>
+      <p>Angels, HNIs, and micro VCs who are actively looking for early-stage Indian startups. Investor profiles are visible once you join as a verified founder.</p>
+      <div style="margin-top:20px;" class="coming-soon">🔒 Full investor directory unlocked after founder verification</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <div class="section-eyebrow">Why Investors Join</div>
+        <div class="section-title">What investors get on FounderVest</div>
+        <p class="section-sub">We make it easier to find quality deals and back the right founders early.</p>
+      </div>
+      <div class="why-grid fade-in">
+        <div class="why-card"><div class="why-icon">🛡️</div><div class="why-title">Verified Deal Flow</div><div class="why-desc">Every startup goes through a verification process before appearing. You only see credible, legitimate opportunities.</div></div>
+        <div class="why-card"><div class="why-icon">🤖</div><div class="why-title">AI-Matched Startups</div><div class="why-desc">Our engine matches you with startups based on your sector preferences, ticket size, and investment stage — saving you hours of filtering.</div></div>
+        <div class="why-card"><div class="why-icon">📊</div><div class="why-title">Traction Metrics</div><div class="why-desc">Access structured data on each startup — revenue, users, growth rate, and team background — all in one place.</div></div>
+        <div class="why-card"><div class="why-icon">💬</div><div class="why-title">Direct Communication</div><div class="why-desc">Message founders directly within the platform. No middlemen, no cold email chains, no confusion.</div></div>
+        <div class="why-card"><div class="why-icon">🔔</div><div class="why-title">Early Access Alerts</div><div class="why-desc">Premium members get notified the moment a new verified startup in their focus area goes live — before the crowd.</div></div>
+        <div class="why-card"><div class="why-icon">🌍</div><div class="why-title">Tier 2–4 Gems</div><div class="why-desc">Access high-potential startups from cities most investors ignore — before they become obvious, expensive bets.</div></div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <section class="section" style="background:var(--surface);">
+    <div class="section-inner">
+      <div style="background:rgba(124,110,247,0.06);border:1px solid rgba(124,110,247,0.15);border-radius:12px;padding:14px 18px;margin-bottom:28px;font-size:0.83rem;color:var(--muted);display:flex;align-items:center;gap:8px;" class="fade-in">
+        <span style="color:var(--accent);">ℹ️</span>
+        These are <strong style="color:var(--text)">illustrative investor types</strong> — not real investor profiles. Actual investor directory will populate as members join.
+      </div>
+      <div class="inv-grid" id="inv-grid"></div>
+      <div style="text-align:center;margin-top:48px;" class="fade-in">
+        <p style="color:var(--muted);font-size:0.875rem;margin-bottom:16px;">Are you an investor? Join to get access to verified deal flow.</p>
+        <a href="signup.html?role=investor" class="btn btn-primary btn-lg">Join as Investor →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--text)"><span class="logo-dot"></span>FounderVest</a><p>Democratizing access to capital for India's next generation of entrepreneurs.</p></div>
+        <div class="footer-col"><h4>Platform</h4><ul><li><a href="startups.html">Browse Startups</a></li><li><a href="investors.html">Find Investors</a></li><li><a href="how.html">How it Works</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 FounderVest · Made in India 🇮🇳 by Ujjawal Upadhyay</p><p>Not a registered broker-dealer.</p></div>
+    </div>
+  </footer>
+</div>
+<script src="app.js"></script>
+<script>
+const types=[
+  {title:'Angel Investor',focus:'Early-stage tech & fintech',sectors:['Fintech','SaaS'],av:'A',bg:'rgba(124,110,247,0.2)',c:'#9282ff'},
+  {title:'HNI – Family Business',focus:'Impact & agritech focus',sectors:['AgriTech','D2C'],av:'H',bg:'rgba(245,200,66,0.2)',c:'#f5c842'},
+  {title:'Micro VC Fund',focus:'Seed & pre-seed deals',sectors:['EdTech','HealthTech'],av:'M',bg:'rgba(34,212,126,0.2)',c:'#22d47e'},
+  {title:'Angel – Ex-Founder',focus:'B2B SaaS & platforms',sectors:['SaaS','B2B'],av:'A',bg:'rgba(247,87,110,0.2)',c:'#f7576e'},
+  {title:'Family Office',focus:'Diversified early-stage',sectors:['Fintech','Retail'],av:'F',bg:'rgba(124,110,247,0.2)',c:'#9282ff'},
+  {title:'Angel – IIT Alumni',focus:'DeepTech & AI startups',sectors:['AI','DeepTech'],av:'A',bg:'rgba(245,200,66,0.2)',c:'#f5c842'},
+  {title:'Impact Investor',focus:'HealthTech & CleanTech',sectors:['HealthTech','CleanTech'],av:'I',bg:'rgba(34,212,126,0.2)',c:'#22d47e'},
+  {title:'Angel – Corporate BG',focus:'Proptech & real estate',sectors:['PropTech','Fintech'],av:'A',bg:'rgba(247,87,110,0.2)',c:'#f7576e'},
+];
+document.getElementById('inv-grid').innerHTML=types.map(inv=>`
+  <div class="inv-card">
+    <div class="inv-av" style="background:${inv.bg};color:${inv.c}">${inv.av}</div>
+    <div class="inv-name">— Investor Name —</div>
+    <div class="inv-title">${inv.title} · ${inv.focus}</div>
+    <div class="inv-tags">${inv.sectors.map(s=>`<span class="inv-tag">${s}</span>`).join('')}</div>
+    <div style="margin-top:12px;font-size:0.72rem;color:var(--muted);background:var(--surface2);padding:6px;border-radius:6px;">🔒 Profile visible after joining</div>
+  </div>`).join('');
+</script>
+</body>
+</html>

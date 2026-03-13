@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How it Works – FounderVest</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.timeline { display: flex; flex-direction: column; gap: 0; max-width: 760px; margin: 0 auto; }
+.tl-item { display: grid; grid-template-columns: 72px 1fr; gap: 0; position: relative; }
+.tl-left { display: flex; flex-direction: column; align-items: center; }
+.tl-num {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--surface2); border: 2px solid var(--border2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 1rem; font-weight: 800; color: var(--accent);
+  flex-shrink: 0; z-index: 1;
+}
+.tl-line { flex: 1; width: 2px; background: var(--border); margin: 6px 0; }
+.tl-item:last-child .tl-line { display: none; }
+.tl-body { padding: 0 0 48px 20px; }
+.tl-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.tl-title { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
+.tl-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.75; margin-bottom: 16px; }
+.tl-details { display: flex; flex-direction: column; gap: 8px; }
+.tl-detail { display: flex; align-items: flex-start; gap: 10px; font-size: 0.84rem; color: var(--muted); }
+.tl-detail::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.info-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; }
+.info-card h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: 6px; }
+.info-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+.info-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.info-list li { font-size: 0.84rem; color: var(--muted); display: flex; gap: 8px; }
+.info-list li span { color: var(--accent); flex-shrink: 0; }
+
+.faq-wrap { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.faq-item.open { border-color: var(--border2); }
+.faq-q { width: 100%; text-align: left; padding: 18px 22px; font-size: 0.9rem; font-weight: 600; font-family: 'Inter', sans-serif; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--text); }
+.faq-toggle { width: 26px; height: 26px; border-radius: 6px; background: var(--surface2); display: flex; align-items: center; justify-content: center; color: var(--muted); flex-shrink: 0; transition: all 0.3s; font-size: 1rem; line-height: 1; }
+.faq-item.open .faq-toggle { background: var(--accent); color: white; transform: rotate(45deg); }
+.faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.faq-body.open { max-height: 200px; }
+.faq-body p { padding: 0 22px 18px; font-size: 0.85rem; color: var(--muted); line-height: 1.75; }
+
+@media(max-width:640px){ .two-col{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>FounderVest</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="startups.html" class="nav-link">Startups</a>
+    <a href="investors.html" class="nav-link">Investors</a>
+    <a href="how.html" class="nav-link">How it Works</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="startups.html" class="nav-link">Startups</a>
+  <a href="investors.html" class="nav-link">Investors</a>
+  <a href="how.html" class="nav-link">How it Works</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <div class="mob-nav-actions">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="badge badge-purple" style="margin-bottom:18px;"><span class="badge-dot"></span> Platform Walkthrough</div>
+      <h1>How FounderVest Works</h1>
+      <p>A simple, transparent process that connects founders and investors without gatekeeping or unnecessary complexity.</p>
+    </div>
+  </div>
+
+  <!-- FOR FOUNDERS -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <div class="section-eyebrow">For Founders</div>
+        <div class="section-title">From signup to funded</div>
+        <p class="section-sub">Every step is designed to reduce friction and build trust with investors.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-item fade-in">
+          <div class="tl-left"><div class="tl-num">1</div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-icon">📝</div>
+            <div class="tl-title">Create your startup profile</div>
+            <p class="tl-desc">Sign up free and fill in your startup details — name, sector, stage, city, funding ask, and a short pitch. This becomes your public-facing profile that investors browse.</p>
+            <div class="tl-details">
+              <div class="tl-detail">Takes less than 15 minutes to complete</div>
+              <div class="tl-detail">No pitch deck required to get started</div>
+              <div class="tl-detail">You control what's visible publicly vs. privately</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-left"><div class="tl-num">2</div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-icon">🛡️</div>
+            <div class="tl-title">Get verified</div>
+            <p class="tl-desc">Our team reviews your MCA registration, GST details, LinkedIn profiles, and startup basics. Verified startups get a credibility badge that makes investors take you seriously from the first look.</p>
+            <div class="tl-details">
+              <div class="tl-detail">Verification takes 2–3 business days on average</div>
+              <div class="tl-detail">We check: MCA/company registration, team background, pitch validity</div>
+              <div class="tl-detail">Verified badge is displayed prominently on your profile</div>
+              <div class="tl-detail">Idea-stage startups can also get verified with team & concept review</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-left"><div class="tl-num">3</div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-icon">🤖</div>
+            <div class="tl-title">Get matched by AI</div>
+            <p class="tl-desc">Our matching engine analyses your sector, stage, location, and funding ask against active investor profiles to suggest the most relevant matches — no cold emailing needed.</p>
+            <div class="tl-details">
+              <div class="tl-detail">Matches are based on investor-declared preferences</div>
+              <div class="tl-detail">You'll see why each match was suggested</div>
+              <div class="tl-detail">Accept or decline match suggestions anytime</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-left"><div class="tl-num">4</div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-icon">🤝</div>
+            <div class="tl-title">Connect and have conversations</div>
+            <p class="tl-desc">Once both sides accept a match, you can message directly on the platform. Schedule intro calls, share additional documents, and answer investor questions — all in one place.</p>
+            <div class="tl-details">
+              <div class="tl-detail">In-platform secure messaging</div>
+              <div class="tl-detail">Document sharing with access controls</div>
+              <div class="tl-detail">Meeting scheduling support (coming soon)</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item fade-in">
+          <div class="tl-left"><div class="tl-num">5</div><div class="tl-line"></div></div>
+          <div class="tl-body">
+            <div class="tl-icon">⚖️</div>
+            <div class="tl-title">Legal & deal support</div>
+            <p class="tl-desc">When you're ready to close, we connect you with legal partners for term sheet review, shareholder agreements, and compliance — so you don't sign something you don't understand.</p>
+            <div class="tl-details">
+              <div class="tl-detail">Term sheet templates and review</div>
+              <div class="tl-detail">Shareholder agreement guidance</div>
+              <div class="tl-detail">MCA filing and compliance support</div>
+              <div class="tl-detail">Success fee of 2–5% applies only on closed deals</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- FOR INVESTORS -->
+  <section class="section" style="background:var(--surface);">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <div class="section-eyebrow">For Investors</div>
+        <div class="section-title">Discover and invest with confidence</div>
+        <p class="section-sub">We do the filtering so you can focus on the decisions that matter.</p>
+      </div>
+      <div class="two-col fade-in">
+        <div class="info-card">
+          <div style="font-size:1.5rem;margin-bottom:14px;">📋</div>
+          <h3>Set your investment preferences</h3>
+          <p>Tell us your sectors of interest, preferred stage, ticket size, and geography. This powers your personalised deal flow.</p>
+          <ul class="info-list">
+            <li><span>→</span> Sector focus (Fintech, EdTech, AgriTech, etc.)</li>
+            <li><span>→</span> Investment stage (Idea, MVP, Revenue, Growth)</li>
+            <li><span>→</span> Ticket size range</li>
+            <li><span>→</span> Geography (Pan-India or specific states)</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div style="font-size:1.5rem;margin-bottom:14px;">🤖</div>
+          <h3>Receive curated deal flow</h3>
+          <p>Our AI surfaces verified startups that match your criteria — saving you hours of sifting through irrelevant pitches.</p>
+          <ul class="info-list">
+            <li><span>→</span> AI-filtered matches based on your preferences</li>
+            <li><span>→</span> Only verified startups appear in your feed</li>
+            <li><span>→</span> Email alerts for new high-match startups</li>
+            <li><span>→</span> Weekly digest of top deal opportunities</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div style="font-size:1.5rem;margin-bottom:14px;">📊</div>
+          <h3>Review structured profiles</h3>
+          <p>Every startup profile includes standardised data fields so you can compare opportunities apples to apples.</p>
+          <ul class="info-list">
+            <li><span>→</span> Team background and LinkedIn verification</li>
+            <li><span>→</span> Revenue or traction metrics (where available)</li>
+            <li><span>→</span> Pitch deck access (after match accepted)</li>
+            <li><span>→</span> Funding history and current cap table (on request)</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <div style="font-size:1.5rem;margin-bottom:14px;">🚀</div>
+          <h3>Close and track</h3>
+          <p>Once you decide to invest, we support the deal close and let you track your portfolio in one place.</p>
+          <ul class="info-list">
+            <li><span>→</span> Deal room for secure document exchange</li>
+            <li><span>→</span> Legal support for term sheets</li>
+            <li><span>→</span> Portfolio dashboard (coming soon)</li>
+            <li><span>→</span> Follow-on opportunity alerts</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header fade-in">
+        <div class="section-eyebrow">FAQ</div>
+        <div class="section-title">Common questions</div>
+        <p class="section-sub">Everything you need to know before you join.</p>
+      </div>
+      <div class="faq-wrap" id="faq"></div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <section style="padding:80px 5%;text-align:center;position:relative;z-index:1;">
+    <div style="max-width:500px;margin:0 auto;">
+      <div class="badge badge-purple" style="margin-bottom:20px;"><span class="badge-dot"></span> Ready to start?</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:14px;">Join FounderVest free today</h2>
+      <p style="color:var(--muted);font-size:0.95rem;line-height:1.7;margin-bottom:32px;">No upfront fees. No gatekeeping. Sign up as a founder or investor and get started in minutes.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="signup.html?role=founder" class="btn btn-primary btn-xl">I'm a Founder →</a>
+        <a href="signup.html?role=investor" class="btn btn-ghost btn-xl">I'm an Investor</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--text)"><span class="logo-dot"></span>FounderVest</a><p>Democratizing access to capital for India's next generation of entrepreneurs.</p></div>
+        <div class="footer-col"><h4>Platform</h4><ul><li><a href="startups.html">Browse Startups</a></li><li><a href="investors.html">Find Investors</a></li><li><a href="how.html">How it Works</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 FounderVest · Made in India 🇮🇳 by Ujjawal Upadhyay</p><p>Not a registered broker-dealer. Investments carry risk.</p></div>
+    </div>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+<script>
+const faqs = [
+  { q: 'Is FounderVest free for founders?', a: 'Yes — founders can sign up and create a profile for free. Pro features like unlimited investor matches, verified badge, and legal support are available on the paid plan (₹999/month). We only charge a success fee (2–5%) when a deal actually closes.' },
+  { q: 'What does the verification process involve?', a: 'We review your company registration (MCA/GST where applicable), team LinkedIn profiles, and your startup pitch for completeness. Idea-stage founders without a registered company can still get verified based on team and concept review.' },
+  { q: 'How does AI matching work?', a: 'Our engine compares your startup\'s sector, stage, location, and funding ask against investor-declared preferences. It surfaces the most compatible investors for you, along with a reason for the match. You decide whether to accept or decline.' },
+  { q: 'Can founders from Tier 2, 3, or 4 cities join?', a: 'Absolutely — that\'s exactly who FounderVest is built for. Founders outside the major metros face a systemic network disadvantage. We\'re here to fix that.' },
+  { q: 'Is my financial data kept confidential?', a: 'Yes. Sensitive financial data is only shared with investors after a mutual match is accepted. Basic profile info (name, sector, stage, city) is visible to verified investors.' },
+  { q: 'What is the success fee?', a: 'We charge 2–5% only when a deal closes through the platform. If no investment happens, you pay nothing beyond your subscription (if any). The exact fee percentage is disclosed upfront before you engage.' },
+  { q: 'How long does verification take?', a: 'Typically 2–3 business days. We notify you by email as soon as verification is complete. Incomplete profiles or missing documents may extend this slightly.' },
+  { q: 'What happens after I get matched?', a: 'Both the founder and investor must accept the match. Once accepted, in-platform messaging opens up. You can share your pitch deck, schedule a call, and move the conversation forward — all within FounderVest.' },
+];
+const faqEl = document.getElementById('faq');
+faqEl.innerHTML = faqs.map((f, i) => `
+  <div class="faq-item" id="fi${i}">
+    <button class="faq-q" onclick="tog(${i})">
+      <span>${f.q}</span>
+      <div class="faq-toggle">+</div>
+    </button>
+    <div class="faq-body" id="fb${i}"><p>${f.a}</p></div>
+  </div>`).join('');
+
+function tog(i) {
+  const body = document.getElementById('fb' + i);
+  const item = document.getElementById('fi' + i);
+  const open = body.classList.contains('open');
+  document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.faq-item').forEach(it => it.classList.remove('open'));
+  document.querySelectorAll('.faq-toggle').forEach(t => t.textContent = '+');
+  if (!open) { body.classList.add('open'); item.classList.add('open'); }
+}
+</script>
+</body>
+</html>

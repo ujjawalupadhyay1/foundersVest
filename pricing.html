@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Pricing – FounderVest</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+.p-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; position: relative; transition: transform 0.3s, border-color 0.3s; }
+.p-card:hover { transform: translateY(-4px); }
+.p-card.popular { border-color: var(--accent); background: linear-gradient(160deg, rgba(124,110,247,0.07), var(--card)); }
+.popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; font-size: 0.67rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; white-space: nowrap; letter-spacing: 0.04em; }
+.p-type { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.p-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; }
+.p-price { font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.3rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 4px; }
+.p-price span { font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+.p-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 24px; line-height: 1.55; }
+.p-div { height: 1px; background: var(--border); margin-bottom: 20px; }
+.p-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.p-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 0.84rem; }
+.p-list li.on { color: var(--text); }
+.p-list li.off { color: rgba(255,255,255,0.22); }
+.fc { width: 18px; height: 18px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; flex-shrink: 0; margin-top: 1px; }
+.fc.on { background: rgba(34,212,126,0.15); color: var(--green); }
+.fc.off { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.15); }
+
+.fee-box { max-width: 680px; margin: 48px auto 0; background: var(--card); border: 1px solid var(--border2); border-radius: 16px; padding: 32px; }
+.fee-box h3 { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.15rem; font-weight: 800; margin-bottom: 10px; }
+.fee-box p { font-size: 0.875rem; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+.fee-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; }
+.fee-table th { text-align: left; padding: 8px 12px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--border); }
+.fee-table td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--muted); }
+.fee-table td:first-child { color: var(--text); font-weight: 500; }
+.fee-table tr:last-child td { border-bottom: none; }
+
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.84rem; max-width: 860px; margin: 0 auto; }
+.compare-table th { padding: 14px 16px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.9rem; font-weight: 700; text-align: center; border-bottom: 1px solid var(--border); }
+.compare-table th:first-child { text-align: left; }
+.compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--muted); text-align: center; }
+.compare-table td:first-child { text-align: left; color: var(--text); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table .y { color: var(--green); font-size: 1rem; }
+.compare-table .n { color: rgba(255,255,255,0.15); font-size: 1rem; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+@media(max-width:780px) { .pricing-grid { grid-template-columns: 1fr; max-width:400px; } }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>FounderVest</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="startups.html" class="nav-link">Startups</a>
+    <a href="investors.html" class="nav-link">Investors</a>
+    <a href="how.html" class="nav-link">How it Works</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="startups.html" class="nav-link">Startups</a>
+  <a href="investors.html" class="nav-link">Investors</a>
+  <a href="how.html" class="nav-link">How it Works</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <div class="mob-nav-actions">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="badge badge-purple" style="margin-bottom:18px;"><span class="badge-dot"></span> Honest Pricing</div>
+      <h1>Simple, transparent pricing</h1>
+      <p>Start free. Upgrade only when you need more. We only make money when you close a deal — so our interests are aligned with yours.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="pricing-grid fade-in">
+
+        <!-- Starter -->
+        <div class="p-card">
+          <div class="p-type">For Founders</div>
+          <div class="p-name">Starter</div>
+          <div class="p-price">Free <span>/ forever</span></div>
+          <div class="p-desc">Get discovered and start connecting — at zero cost, with no card required.</div>
+          <div class="p-div"></div>
+          <ul class="p-list">
+            <li class="on"><span class="fc on">✓</span>Basic startup profile page</li>
+            <li class="on"><span class="fc on">✓</span>Up to 3 investor match suggestions/month</li>
+            <li class="on"><span class="fc on">✓</span>Access to founder community</li>
+            <li class="on"><span class="fc on">✓</span>Platform blog and resources</li>
+            <li class="off"><span class="fc off">✕</span>Verified credibility badge</li>
+            <li class="off"><span class="fc off">✕</span>Unlimited investor matches</li>
+            <li class="off"><span class="fc off">✕</span>In-platform messaging</li>
+            <li class="off"><span class="fc off">✕</span>Legal & compliance support</li>
+            <li class="off"><span class="fc off">✕</span>Pitch deck review</li>
+          </ul>
+          <a href="signup.html?role=founder" class="btn btn-ghost btn-lg" style="width:100%;justify-content:center;">Get Started Free</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="p-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <div class="p-type">For Founders</div>
+          <div class="p-name">Pro</div>
+          <div class="p-price">₹999 <span>/ month</span></div>
+          <div class="p-desc">Everything you need to run a serious fundraising process and close your round.</div>
+          <div class="p-div"></div>
+          <ul class="p-list">
+            <li class="on"><span class="fc on">✓</span>Full verified startup profile</li>
+            <li class="on"><span class="fc on">✓</span>Verified credibility badge</li>
+            <li class="on"><span class="fc on">✓</span>Unlimited investor match suggestions</li>
+            <li class="on"><span class="fc on">✓</span>Priority placement in investor feed</li>
+            <li class="on"><span class="fc on">✓</span>In-platform secure messaging</li>
+            <li class="on"><span class="fc on">✓</span>Document sharing & deal room</li>
+            <li class="on"><span class="fc on">✓</span>One pitch deck review per month</li>
+            <li class="on"><span class="fc on">✓</span>Legal & compliance guidance</li>
+            <li class="on"><span class="fc on">✓</span>Priority support</li>
+          </ul>
+          <a href="signup.html?role=founder" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">Start Free Trial →</a>
+        </div>
+
+        <!-- Investor -->
+        <div class="p-card">
+          <div class="p-type">For Investors</div>
+          <div class="p-name">Investor Premium</div>
+          <div class="p-price">₹2,499 <span>/ month</span></div>
+          <div class="p-desc">AI-curated deal flow, full verified startup data, and direct founder access.</div>
+          <div class="p-div"></div>
+          <ul class="p-list">
+            <li class="on"><span class="fc on">✓</span>Verified investor profile</li>
+            <li class="on"><span class="fc on">✓</span>AI-curated startup deal flow</li>
+            <li class="on"><span class="fc on">✓</span>Full traction & background data</li>
+            <li class="on"><span class="fc on">✓</span>Direct messaging with founders</li>
+            <li class="on"><span class="fc on">✓</span>Early access to new listings</li>
+            <li class="on"><span class="fc on">✓</span>Email alerts for matching startups</li>
+            <li class="on"><span class="fc on">✓</span>Document & pitch deck access</li>
+            <li class="on"><span class="fc on">✓</span>Portfolio tracking dashboard</li>
+            <li class="on"><span class="fc on">✓</span>Priority support</li>
+          </ul>
+          <a href="signup.html?role=investor" class="btn btn-lg" style="width:100%;justify-content:center;background:rgba(245,200,66,0.12);color:var(--gold);border:1px solid rgba(245,200,66,0.25);">Join as Investor →</a>
+        </div>
+      </div>
+
+      <!-- Success fee box -->
+      <div class="fee-box fade-in">
+        <h3>💡 How our success fee works</h3>
+        <p>We only charge a success fee when a deal actually closes through our platform — so our incentives are 100% aligned with yours. There are no upfront brokerage fees or hidden charges.</p>
+        <table class="fee-table">
+          <tr><th>Deal Size</th><th>Success Fee</th><th>Notes</th></tr>
+          <tr><td>Up to ₹50L</td><td>5%</td><td>Paid only on close</td></tr>
+          <tr><td>₹50L – ₹2Cr</td><td>3.5%</td><td>Paid only on close</td></tr>
+          <tr><td>₹2Cr – ₹10Cr</td><td>2.5%</td><td>Paid only on close</td></tr>
+          <tr><td>Above ₹10Cr</td><td>2%</td><td>Negotiable for large rounds</td></tr>
+        </table>
+        <p style="margin-top:16px;margin-bottom:0;font-size:0.8rem;">If a deal doesn't close, you owe us nothing beyond your plan subscription. Fee is clearly agreed before any deal begins.</p>
+      </div>
+
+      <!-- Comparison table -->
+      <div style="margin-top:72px;" class="fade-in">
+        <div class="section-header" style="margin-bottom:36px;">
+          <div class="section-eyebrow">Full Comparison</div>
+          <div class="section-title">What's included in each plan</div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Starter</th>
+                <th>Pro</th>
+                <th>Investor Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Profile creation</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Verified credibility badge</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Investor match suggestions</td><td>3 / month</td><td>Unlimited</td><td>—</td></tr>
+              <tr><td>AI-curated deal flow (investors)</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
+              <tr><td>In-platform messaging</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Document & pitch deck sharing</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Legal & compliance guidance</td><td class="n">✕</td><td class="y">✓</td><td class="n">✕</td></tr>
+              <tr><td>Pitch deck review</td><td class="n">✕</td><td>1 / month</td><td class="n">✕</td></tr>
+              <tr><td>Priority in investor feed</td><td class="n">✕</td><td class="y">✓</td><td class="n">✕</td></tr>
+              <tr><td>Early access to new listings</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
+              <tr><td>Portfolio tracking dashboard</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
+              <tr><td>Priority support</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Success fee on closed deals</td><td>2–5%</td><td>2–5%</td><td>—</td></tr>
+              <tr><td>Price</td><td><strong style="color:var(--text)">Free</strong></td><td><strong style="color:var(--text)">₹999/mo</strong></td><td><strong style="color:var(--text)">₹2,499/mo</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:24px;font-size:0.82rem;color:var(--muted);">All plans can be cancelled anytime. No lock-in. Pricing may change as the platform evolves — existing subscribers will be notified 30 days in advance.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><a href="index.html" class="logo" style="color:var(--text)"><span class="logo-dot"></span>FounderVest</a><p>Democratizing access to capital for India's next generation of entrepreneurs.</p></div>
+        <div class="footer-col"><h4>Platform</h4><ul><li><a href="startups.html">Browse Startups</a></li><li><a href="investors.html">Find Investors</a></li><li><a href="how.html">How it Works</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 FounderVest · Made in India 🇮🇳 by Ujjawal Upadhyay</p><p>Not a registered broker-dealer. Investments carry risk.</p></div>
+    </div>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

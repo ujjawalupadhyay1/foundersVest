@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Browse Startups – FounderVest</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; align-items: center; }
+.filter-btn { padding: 8px 18px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; border: 1px solid var(--border2); background: transparent; color: var(--muted); cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+.filter-btn:hover { color: var(--text); border-color: var(--border2); background: var(--surface2); }
+.filter-btn.active { background: var(--accent); color: white; border-color: transparent; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+.s-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.3s; }
+.s-card:hover { border-color: var(--border2); transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+.s-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.s-logo { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.verified { display: flex; align-items: center; gap: 4px; font-size: 0.67rem; font-weight: 600; color: var(--green); background: rgba(34,212,126,0.1); border: 1px solid rgba(34,212,126,0.2); padding: 3px 9px; border-radius: 20px; }
+.s-name { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+.s-tag { font-size: 0.7rem; color: var(--muted); background: var(--surface2); padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; border: 1px solid var(--border); }
+.s-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.6; margin-bottom: 18px; }
+.s-meta { display: flex; gap: 16px; margin-bottom: 14px; }
+.s-m { }
+.s-m .v { font-family: 'Bricolage Grotesque', sans-serif; font-size: 0.95rem; font-weight: 700; }
+.s-m .k { font-size: 0.68rem; color: var(--muted); }
+.bar { height: 3px; background: rgba(255,255,255,0.05); border-radius: 99px; overflow: hidden; margin-bottom: 6px; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 99px; }
+.bar-labels { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--muted); }
+.early-tag { font-size: 0.68rem; font-weight: 600; color: var(--accent); background: rgba(124,110,247,0.1); padding: 2px 8px; border-radius: 20px; border: 1px solid rgba(124,110,247,0.2); }
+@media(max-width:600px){ .grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>FounderVest</a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="startups.html" class="nav-link">Startups</a>
+    <a href="investors.html" class="nav-link">Investors</a>
+    <a href="how.html" class="nav-link">How it Works</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <a href="index.html" class="nav-link">Home</a>
+  <a href="startups.html" class="nav-link">Startups</a>
+  <a href="investors.html" class="nav-link">Investors</a>
+  <a href="how.html" class="nav-link">How it Works</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+  <div class="mob-nav-actions">
+    <a href="login.html" class="btn btn-ghost">Log in</a>
+    <a href="signup.html" class="btn btn-primary">Join Free →</a>
+  </div>
+</div>
+
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="badge badge-purple" style="margin-bottom:18px;"><span class="badge-dot"></span> Early Access</div>
+      <h1>Browse Startups</h1>
+      <p>Verified early-stage companies looking to raise. This page will grow as founders join and complete verification.</p>
+      <div style="margin-top:20px;" class="coming-soon">🔒 Full listings visible after you join as an investor</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <!-- Filter -->
+      <div class="filter-bar fade-in">
+        <button class="filter-btn active" onclick="filter('all',this)">All Sectors</button>
+        <button class="filter-btn" onclick="filter('fintech',this)">Fintech</button>
+        <button class="filter-btn" onclick="filter('edtech',this)">EdTech</button>
+        <button class="filter-btn" onclick="filter('healthtech',this)">HealthTech</button>
+        <button class="filter-btn" onclick="filter('agritech',this)">AgriTech</button>
+        <button class="filter-btn" onclick="filter('saas',this)">SaaS</button>
+      </div>
+
+      <!-- Empty state shown when platform is fresh -->
+      <div class="empty-state fade-in" id="empty-state" style="display:none;">
+        <div class="es-icon">🚀</div>
+        <h3>Startups are joining now</h3>
+        <p>We're in early access. As founders complete verification, their profiles will appear here. Be the first to list your startup!</p>
+        <a href="signup.html?role=founder" class="btn btn-primary btn-lg">List Your Startup →</a>
+      </div>
+
+      <!-- Sample layout to show what it will look like (clearly marked as demo) -->
+      <div style="background: rgba(124,110,247,0.06); border: 1px solid rgba(124,110,247,0.15); border-radius: 12px; padding: 14px 18px; margin-bottom: 28px; font-size:0.83rem; color:var(--muted); display:flex; align-items:center; gap:8px;">
+        <span style="color:var(--accent);">ℹ️</span>
+        These are <strong style="color:var(--text)">illustrative examples</strong> showing what startup listings will look like — not real companies on the platform yet.
+      </div>
+
+      <div class="grid" id="grid"></div>
+
+      <div style="text-align:center;margin-top:48px;" class="fade-in">
+        <p style="color:var(--muted);font-size:0.875rem;margin-bottom:16px;">Are you a founder? Get verified and be among the first listings.</p>
+        <a href="signup.html?role=founder" class="btn btn-primary btn-lg">List Your Startup →</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color:var(--text)"><span class="logo-dot"></span>FounderVest</a>
+          <p>Democratizing access to capital for India's next generation of entrepreneurs.</p>
+        </div>
+        <div class="footer-col"><h4>Platform</h4><ul><li><a href="startups.html">Browse Startups</a></li><li><a href="investors.html">Find Investors</a></li><li><a href="how.html">How it Works</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+        <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 FounderVest · Made in India 🇮🇳 by Ujjawal Upadhyay</p>
+        <p>Not a registered broker-dealer. Investments carry risk.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+<script>
+const examples = [
+  {sector:'fintech',e:'💳',bg:'rgba(245,200,66,0.12)',desc:'A UPI-based micro-lending platform for small business owners with limited credit history.',ask:'₹25–75L',stage:'MVP',city:'Tier 2 city'},
+  {sector:'edtech',e:'📚',bg:'rgba(124,110,247,0.12)',desc:'Vernacular skill training platform with placement support for youth in underserved regions.',ask:'₹50L–1Cr',stage:'Idea',city:'Tier 3 city'},
+  {sector:'agritech',e:'🌾',bg:'rgba(34,212,126,0.12)',desc:'Direct market linkage between farmers and urban buyers, cutting middleman costs significantly.',ask:'₹20–60L',stage:'MVP',city:'Rural India'},
+  {sector:'healthtech',e:'🏥',bg:'rgba(247,87,110,0.12)',desc:'Affordable telemedicine solution connecting rural patients with verified doctors remotely.',ask:'₹40–80L',stage:'Idea',city:'Tier 3–4 city'},
+  {sector:'saas',e:'⚙️',bg:'rgba(124,110,247,0.12)',desc:'B2B inventory and billing software designed for small retailers in non-metro markets.',ask:'₹30–70L',stage:'MVP',city:'Tier 2 city'},
+  {sector:'agritech',e:'🤖',bg:'rgba(34,212,126,0.12)',desc:'AI-powered crop advisory delivered via WhatsApp to smallholder farmers without internet access.',ask:'₹25–50L',stage:'Idea',city:'Rural India'},
+];
+
+let cur='all';
+function render(){
+  const d=cur==='all'?examples:examples.filter(s=>s.sector===cur);
+  document.getElementById('grid').innerHTML=d.map(s=>`
+    <div class="s-card">
+      <div class="s-top">
+        <div class="s-logo" style="background:${s.bg}">${s.e}</div>
+        <span class="early-tag">Example</span>
+      </div>
+      <div class="s-name">— Startup Name —</div>
+      <div class="s-tag">${s.sector.charAt(0).toUpperCase()+s.sector.slice(1)} · ${s.city}</div>
+      <p class="s-desc">${s.desc}</p>
+      <div class="s-meta">
+        <div class="s-m"><div class="v">${s.ask}</div><div class="k">Raising</div></div>
+        <div class="s-m"><div class="v">${s.stage}</div><div class="k">Stage</div></div>
+        <div class="s-m"><div class="v">—</div><div class="k">Committed</div></div>
+      </div>
+      <div style="text-align:center;padding:10px;background:var(--surface2);border-radius:8px;font-size:0.78rem;color:var(--muted);">
+        🔒 Join as investor to view full profile
+      </div>
+    </div>`).join('');
+}
+function filter(f,btn){
+  cur=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+render();
+</script>
+</body>
+</html>
